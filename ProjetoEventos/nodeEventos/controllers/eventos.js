@@ -1,7 +1,8 @@
 module.exports = function (app) {
 
     var Evento = app.models.eventos;
-
+    var http = require('http')
+    
     var EventosController = {
         menu: function (request, response) {
 

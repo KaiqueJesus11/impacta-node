@@ -1,16 +1,16 @@
 const { response } = require("express")
 
-module.exports = (app) =>{
+module.exports = (app) => {
     const Eventos = app.models.eventos
     const EventoController = {
         home: (request, response) => {
             response.send('Servidor no ar')
         },
-        listarEventos: (request, response) =>{
+        listarEventos: (request, response) => {
             Eventos.find((erro, eventos) => {
-                if(erro){
+                if (erro) {
                     response.json(erro)
-                }else{
+                } else {
                     response.json(eventos)
                 }
             })
@@ -19,9 +19,9 @@ module.exports = (app) =>{
             const id = request.params.id
 
             Eventos.findById(id, (erro, evento) => {
-                if(erro){
+                if (erro) {
                     response.json(erro)
-                }else{
+                } else {
                     response.json(evento)
                 }
             })
@@ -29,9 +29,9 @@ module.exports = (app) =>{
         cadastrarEvento: (request, response) => {
             const evento = request.body
             Eventos.create(evento, (erro, evento) => {
-                if(erro){
+                if (erro) {
                     response.json(erro)
-                }else{
+                } else {
                     response.json(evento)
                 }
             })
@@ -40,23 +40,23 @@ module.exports = (app) =>{
             const id = request.params.id
             const eventoDto = request.body
             Eventos.findById(id, (erro, evento) => {
-                if(erro){
+                if (erro) {
                     response.json(erro)
-                }else{
-                    if(eventoDto.descricao){
+                } else {
+                    if (eventoDto.descricao) {
                         evento.descricao = eventoDto.descricao
                     }
-                    if(eventoDto.data){
+                    if (eventoDto.data) {
                         evento.data = eventoDto.data
                     }
-                    if(eventoDto.valor){
+                    if (eventoDto.valor) {
                         evento.valor = eventoDto.valor
                     }
 
                     evento.save((erro, evento) => {
-                        if(erro){
+                        if (erro) {
                             response.json(erro)
-                        }else{
+                        } else {
                             response.json(evento)
                         }
                     })
@@ -65,14 +65,14 @@ module.exports = (app) =>{
         },
         deletarEvento: (request, response) => {
             const id = request.params.id
-            Eventos.remove({"_id": id}, (erro) => {
-                if(erro){
+            Eventos.remove({ "_id": id }, (erro) => {
+                if (erro) {
                     response.json(erro)
-                }else{
+                } else {
                     response.json("Evento removido")
                 }
             })
-        }
+        },
     }
 
     return EventoController;

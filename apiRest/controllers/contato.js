@@ -16,7 +16,7 @@ module.exports = (app) =>{
             })
         },
         buscarContatoPorID: (request, response) => {
-            const id = request.query.id
+            const id = request.params.id
             Contato.findById(id, (erro, contato) => {
                 if(erro){
                     response.json(erro)
@@ -36,7 +36,7 @@ module.exports = (app) =>{
             })
         },
         atualizarContato: (request, response) => {
-            const id = request.query.id
+            const id = request.params.id
             const contatoDto = request.body
             Contato.findById(id, (erro, contato) => {
                 if(erro){
@@ -64,8 +64,8 @@ module.exports = (app) =>{
                 }
             })
         },
-        deletarContato: (resquest, response) => {
-            const id = request.query.id
+        deletarContato: (request, response) => {
+            const id = request.params.id
             Contato.delete(id, (erro) => {
                 if(erro){
                     response.json(erro)

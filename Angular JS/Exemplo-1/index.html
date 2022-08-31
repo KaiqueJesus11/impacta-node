@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="appModule.js"></script>
+</head>
+
+<body ng-controller="Principal as ctl">
+    Visualizar mensagem: {{ctl.mensagem}}
+    <button ng-click="ctl.alterarMensagem()">
+        Alterar mensagem
+    </button>
+    <section>
+        <h2>Lista de alunos</h2>
+        <div ng-repeat="aluno in ctl.alunos">
+            {{aluno.nome}} - {{aluno.curso}}
+        </div>
+    </section>
+</body>
+
+</html>

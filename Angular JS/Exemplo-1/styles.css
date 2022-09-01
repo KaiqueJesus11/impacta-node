@@ -5,3 +5,6 @@
 .done-false{
     color: red;
 }
+.nome.ng-valid {
+  color: green
+}

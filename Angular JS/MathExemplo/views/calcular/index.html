@@ -7,11 +7,14 @@
     <title>MathExemplo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
-    <script src="factories/mathFactory.js"></script>
-    <script src="services/mathService.js"></script>
-    <script src="controllers/appController.js"></script>
+    <script src="../../factories/mathFactory.js"></script>
+    <script src="../../services/mathService.js"></script>
+    <script src="../../controllers/appController.js"></script>
 </head>
 <body ng-controller="Principal as clt">
-    <div ng-view></div>
+    <input type="text" ng-model="clt.valor" placeholder="Digite um numero"/>
+    <button ng-click="clt.calcularQuadrado()">Calcular quadrado</button>
+    <br />
+    <div ng-bind="clt.resultado"></div>
 </body>
 </html>

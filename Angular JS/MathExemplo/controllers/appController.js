@@ -12,7 +12,8 @@ angular.module('appAngular', ['ngRoute'])
         '$location',
         '$window',
         'MathService',
-        function ($location, $window, MathService) {
+        '$http',
+        function ($location, $window, MathService, $http) {
             var self = this
 
             self.calcularQuadrado = () => {
@@ -29,15 +30,12 @@ angular.module('appAngular', ['ngRoute'])
                 console.log(mensagem)
             }
 
-            self.listar = () => {
-                console.log("listando")
-                $http.get('http://localhost:3200/eventos')
-                    .then(function (response) {
-                        console.log("sucesso")
-                        self.eventos = response.data
-                    }, function (error) {
-                        console.log(`Erro: ${error}`)
-                    })
-            }
+            $http.get('http://localhost:3200/eventos')
+                .then(function (response) {
+                    self.eventos = response.data
+                }, function (error) {
+                    console.log(`Erro: ${error}`)
+                })
+            
         }
     ])
